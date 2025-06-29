@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunte ao Gemini</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background-color: #f0f2f5; color: #333; }
+        .container { max-width: 700px; margin: auto; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        textarea { width: calc(100% - 22px); padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; resize: vertical; min-height: 80px; font-size: 16px; }
+        button { background-color: #4285F4; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.2s; }
+        button:hover { background-color: #357ae8; }
+        #response { margin-top: 20px; padding: 15px; background-color: #e9f5fe; border-left: 5px solid #1a73e8; border-radius: 5px; white-space: pre-wrap; line-height: 1.6; }
+        #loading { color: #555; display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <textarea id="questionInput" placeholder="Digite sua pergunta aqui..."></textarea>
+        <button onclick="askGemini()">Perguntar</button>
+        <p id="loading">Gerando resposta...</p>
+        <h3>Resposta:</h3>
+        <div id="response">Aguardando sua pergunta...</div>
+    </div>
+
+    <script>
+        async function askGemini() {
+            const questionInput = document.getElementById('questionInput');
+            const responseDiv = document.getElementById('response');
+            const loadingDiv = document.getElementById('loading');
+
+            if (!questionInput.value.trim()) {
+                responseDiv.textContent = "Por favor, digite uma pergunta válida.";
+                return;
+            }
+
+            loadingDiv.style.display = 'block'; // Mostra "Gerando resposta..."
+            responseDiv.textContent = ''; // Limpa a resposta anterior
+            
+            try {
+                // AQUI ESTÁ A MÁGICA: Chamando nosso próprio backend!
+                const res = await fetch('http://localhost:3000/ask-gemini', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: questionInput.value })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    responseDiv.textContent = data.answer;
+                } else {
+                    responseDiv.textContent = `Erro do servidor: ${data.error}`;
+                }
+            } catch (error) {
+                console.error('Erro na requisição:', error);
+                responseDiv.textContent = 'Falha na comunicação com o servidor. Verifique o console e se o `server.js` está rodando.';
+            } finally {
+                loadingDiv.style.display = 'none'; // Esconde o "Gerando resposta..."
+            }
+        }
+    </script>
+</body>
+</html>

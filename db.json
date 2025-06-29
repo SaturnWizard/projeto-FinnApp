@@ -1,0 +1,87 @@
+{
+  "users": [
+    {
+      "id": "d044",
+      "nome": "SANTIAGO",
+      "email": "teste@teste.com",
+      "password": "1234",
+      "saldo": 3000,
+      "totalReceitas": 5500,
+      "totalDespesas": 2500
+    },
+    {
+      "id": "fb73",
+      "nome": "pedro",
+      "email": "pedroabrantesconde7@gmail.com",
+      "password": "12345",
+      "saldo": 1300,
+      "totalReceitas": 2000,
+      "totalDespesas": 700
+    }
+  ],
+  "transactions": [
+    {
+      "id": "e638",
+      "userId": "fb73",
+      "tipo": "receita",
+      "descricao": "Salário",
+      "valor": 2000,
+      "categoria": "Salário",
+      "data": "2025-06-23T17:55:43.685Z"
+    },
+    {
+      "id": "376d",
+      "userId": "fb73",
+      "tipo": "despesa",
+      "descricao": "acidente",
+      "valor": 700,
+      "categoria": "Carro",
+      "data": "2025-06-23T17:58:14.633Z"
+    },
+    {
+      "id": "334c",
+      "userId": "d044",
+      "tipo": "receita",
+      "descricao": "teste",
+      "valor": 1000,
+      "categoria": "salario",
+      "data": "2025-06-29T19:35:47.202Z"
+    },
+    {
+      "id": "9834",
+      "userId": "d044",
+      "tipo": "receita",
+      "descricao": "teste",
+      "valor": 1000,
+      "categoria": "salario",
+      "data": "2025-06-29T19:56:28.395Z"
+    },
+    {
+      "id": "4d3f",
+      "userId": "d044",
+      "tipo": "despesa",
+      "descricao": "plano saude",
+      "valor": 1000,
+      "categoria": "saude",
+      "data": "2025-06-29T19:56:51.916Z"
+    },
+    {
+      "id": "26a2",
+      "userId": "d044",
+      "tipo": "receita",
+      "descricao": "aluguel",
+      "valor": 1500,
+      "categoria": "aluguel",
+      "data": "2025-06-29T20:09:01.014Z"
+    },
+    {
+      "id": "350c",
+      "userId": "d044",
+      "tipo": "despesa",
+      "descricao": "acidente",
+      "valor": 1000,
+      "categoria": "acidente de carro",
+      "data": "2025-06-29T20:09:13.329Z"
+    }
+  ]
+}
