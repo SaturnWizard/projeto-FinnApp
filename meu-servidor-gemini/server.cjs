@@ -8,6 +8,8 @@ const app = express();
 const port = 3000;
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
+console.log('Chave da API carregada:', process.env.GEMINI_API_KEY);
+
 const instrucaoDeSistema = {
     text: `
       # CONSTITUIÇÃO DO CHATBOT
@@ -50,4 +52,10 @@ app.post('/ask-gemini', async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Servidor rodando! Acesse em http://localhost:${port}`);
+});
+
+const path = require('path');
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });

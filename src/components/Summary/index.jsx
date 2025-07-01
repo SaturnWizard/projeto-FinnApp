@@ -3,16 +3,33 @@ import { TransactionsContext } from '../../context/TransactionsContext';
 
 const SummaryCard = ({ title, value, colorClass }) => (
   <div style={{
-    border: "1px solid #ccc",
-    borderRadius: "10px",
-    padding: "20px",
-    minWidth: "200px",
+    border: "2px solid #ccc",
+    borderRadius: "15px",
+    padding: "35px 25px",
+    minWidth: "280px",
     textAlign: "center",
     backgroundColor: "#f8f9fa",
-    boxShadow: "0 2px 4px rgba(0,0,0,0.05)"
-  }}>
-    <h5>{title}</h5>
-    <p style={{ fontSize: '1.5rem', fontWeight: 'bold' }} className={colorClass}>
+    boxShadow: "0 6px 12px rgba(0,0,0,0.15)",
+    transition: "transform 0.2s ease",
+    cursor: "pointer"
+  }}
+  onMouseEnter={(e) => e.target.style.transform = "translateY(-3px)"}
+  onMouseLeave={(e) => e.target.style.transform = "translateY(0px)"}
+  >
+    <h4 style={{ 
+      marginBottom: "20px", 
+      fontSize: "1.4rem", 
+      fontWeight: "600",
+      color: "#2c3e50"
+    }}>
+      {title}
+    </h4>
+    <p style={{ 
+      fontSize: '2.2rem', 
+      fontWeight: 'bold', 
+      margin: 0,
+      letterSpacing: "1px"
+    }} className={colorClass}>
       {value}
     </p>
   </div>
@@ -32,23 +49,25 @@ const Summary = () => {
     <div style={{
       display: "flex",
       justifyContent: "center",
-      gap: "30px",
-      marginBottom: "40px",
-      flexWrap: "wrap"
+      gap: "40px",
+      marginBottom: "50px",
+      flexWrap: "wrap",
+      padding: "20px 0"
     }}>
       <SummaryCard 
-        title="Total de Receitas" 
+        title="💰 Total de Receitas" 
         value={formatCurrency(summary.totalReceitas)} 
         colorClass="text-success" 
       />
       <SummaryCard 
-        title="Total de Despesas" 
+        title="💸 Total de Despesas" 
         value={formatCurrency(summary.totalDespesas)} 
         colorClass="text-danger" 
       />
       <SummaryCard 
-        title="Saldo Atual" 
+        title="💎 Saldo Atual" 
         value={formatCurrency(summary.saldo)} 
+        colorClass={summary.saldo >= 0 ? "text-primary" : "text-danger"}
       />
     </div>
   );

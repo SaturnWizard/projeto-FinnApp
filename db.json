@@ -17,6 +17,15 @@
       "saldo": 1300,
       "totalReceitas": 2000,
       "totalDespesas": 700
+    },
+    {
+      "id": "999f",
+      "nome": "pedro",
+      "email": "pedroabrantesconde7@gmail.com",
+      "password": "12345",
+      "saldo": 0,
+      "totalReceitas": 0,
+      "totalDespesas": 0
     }
   ],
   "transactions": [

@@ -82,20 +82,47 @@ const TransactionsPage = () => {
 
   return (
     <Container className="mt-4" style={{ maxWidth: '1200px', textAlign: "center", padding: "2rem", background: "linear-gradient(174deg,rgba(250, 254, 255, 1) 0%, rgba(232, 232, 232, 1) 100%)", height: '30%', borderRadius: '10px', margin: 'auto', marginTop: '60px'  }}>
-      <div className="d-flex justify-content-between align-items-center mb-4" style={{ justifyContent: 'center' }}>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <Button
+          variant="outline-primary"
+          onClick={() => navigate('/dashboard')}
+          style={{
+            borderRadius: '25px',
+            padding: '8px 20px',
+            fontSize: '0.9rem',
+            fontWeight: '600',
+            border: '2px solid #007bff',
+            backgroundColor: 'transparent',
+            color: '#007bff',
+            transition: 'all 0.3s ease'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = '#007bff';
+            e.target.style.color = 'white';
+            e.target.style.transform = 'translateY(-2px)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = 'transparent';
+            e.target.style.color = '#007bff';
+            e.target.style.transform = 'translateY(0px)';
+          }}
+        >
+          ⬅️ Voltar ao Dashboard
+        </Button>
+        
         <h2
           style={{
             textAlign: 'center',
             color: 'black',
             margin: 0,
             fontSize: '2rem',
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center'
+            flex: 1
           }}
         >
           📋 Histórico de Lançamentos
         </h2>
+        
+        <div style={{ width: '180px' }}></div>
       </div>
 
       <Card className="shadow-sm">
